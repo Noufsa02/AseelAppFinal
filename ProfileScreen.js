@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Camera } from 'expo-camera';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons'; // Importing necessary icons
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
 const cleanName = (firstName) => {
@@ -73,7 +73,7 @@ const ProfileScreen = ({ navigation }) => {
     } else if (gender === 'female') {
       return <Fontisto name="female" size={100} color="#000" />;
     } else {
-      return <Fontisto name="person" size={100} color="#000" />;
+      return <FontAwesome name="user-circle" size={100} color="#424530" />;
     }
   };
 

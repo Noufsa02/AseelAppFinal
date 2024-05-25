@@ -18,7 +18,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
       setLoading(true);
       await sendPasswordResetEmail(FIREBASE_AUTH, email);
       setLoading(false);
-      alert('Password reset email sent! Check your inbox.');
+      alert('.تم إرسال رسالة لإعادة تعيين كلمة المرور, تحقق من بريدك الإلكتروني ثم أعد تسجيل الدخول');
     } catch (error) {
       setLoading(false);
       console.error('Password reset failed:', error);

@@ -21,7 +21,7 @@ const UploadAndCapture = ({ navigation }) => {
   useEffect(() => {
     (async () => {
       await tf.ready();
-      // Load your model. Adjust paths as necessary.
+      // Load  model.
       const loadedModel = await tf.loadLayersModel(bundleResourceIO(modelJson, modelWeights));
       setModel(loadedModel);
       console.log('Model loaded.');
@@ -71,7 +71,7 @@ const UploadAndCapture = ({ navigation }) => {
         setAdditionalInfo(additionalInfo);
       } else {
         console.log('No image picked or missing base64 data');
-        setResult('No image picked or missing base64 data');
+        setResult('لم يتم تصوير أو ارفاق صورة، حاول مرةاخرى');
       }
     } catch (error) {
       console.error(error);
@@ -109,7 +109,7 @@ const UploadAndCapture = ({ navigation }) => {
     const threshold = 0.5; // Adjust this threshold based on your needs
 
     if (highestPredictionValue > threshold) {
-        return {predictionMsg: `${classes[highestPredictionIndex]} has been recognized`, predictedClass: classes[highestPredictionIndex]};
+        return {predictionMsg: `${classes[highestPredictionIndex]}`, predictedClass: classes[highestPredictionIndex]};
     } else {
         return {predictionMsg: 'Heritage not recognized', predictedClass: null};
     }
@@ -138,20 +138,6 @@ const UploadAndCapture = ({ navigation }) => {
     }
   };
 
- // return (
-    // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    //   <Button title="Select Image from Library" onPress={() => handleImageAndPredict('library')} disabled={loading || !model} />
-    //   <View style={{ height: 20 }} />
-    //   <Button title="Capture Image with Camera" onPress={() => handleImageAndPredict('camera')} disabled={loading || !model} />
-    //   {loading ? (
-    //     <ActivityIndicator size="large" color="#0e1457" style={{ marginTop: 20 }} />
-    //   ) : (
-    //     <>
-    //       <Text style={{ marginTop: 20 }}>{result}</Text>
-    //       {additionalInfo ? <Text>{additionalInfo}</Text> : null}
-    //     </>
-    //   )}
-    // </View>
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -196,7 +182,7 @@ const UploadAndCapture = ({ navigation }) => {
           </View>
         ))
       ) : (
-        <Text style={styles.noData}>No data available</Text>
+        <Text style={styles.noData}>تنبيه: يُسمح لك بتصويرالاثار والتراث العمراني باستخدام الكاميرا أو ارفاق الصورة</Text>
       )}
       </ScrollView>
     </View>
@@ -251,10 +237,10 @@ const UploadAndCapture = ({ navigation }) => {
       marginVertical: 10,
     },
     noData: {
-      fontSize: 16,
+      fontSize: 12,
       textAlign: 'center',
       marginVertical: 20,
-      color: '#999',
+      color: '#000',
     },
     iconContainer: {
       flexDirection: 'row',

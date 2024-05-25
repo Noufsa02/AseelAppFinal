@@ -40,28 +40,30 @@ const EditProfileScreen = ({ navigation }) => {
   }, []);
 
   const handleSave = async () => {
-    if (!username.trim() || !email.trim() || !password.trim()) {
-      Alert.alert('Error', 'Please fill out all fields');
+    if (!username.trim() || !email.trim()) {
+      Alert.alert('رجاءا املئ جميع الحقول');
       return;
     }
-
+  
     try {
       const currentUser = FIREBASE_AUTH.currentUser;
       if (currentUser) {
-        const credential = EmailAuthProvider.credential(currentUser.email, password);
-        await reauthenticateWithCredential(currentUser, credential);
-
+        if (password) {
+          const credential = EmailAuthProvider.credential(currentUser.email, password);
+          await reauthenticateWithCredential(currentUser, credential);
+        }
+  
         if (currentUser.email !== email) {
           await updateEmail(currentUser, email);
         }
-
+  
         const userRef = doc(FIREBASE_DB, 'users', currentUser.uid);
         await updateDoc(userRef, {
           firstName: username,
           email: email,
         });
-
-        Alert.alert('Success', 'Profile updated successfully');
+  
+        Alert.alert('لقد تم تحديث الملف الشخصي بنجاح.');
         navigation.goBack();
       }
     } catch (error) {
@@ -69,6 +71,7 @@ const EditProfileScreen = ({ navigation }) => {
       Alert.alert('Error', 'An error occurred while updating the profile');
     }
   };
+  
 
   return (
     <View style={styles.container}>

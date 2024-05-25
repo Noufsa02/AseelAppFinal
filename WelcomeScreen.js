@@ -28,12 +28,6 @@ const WelcomeScreen = ({ navigation }) => {
           <Text style={styles.buttonText}>إنشاء حساب</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.button3}
-          onPress={() => navigation.navigate('UsageGuide')}>
-          <Text style={styles.buttonText}>Guide page </Text>
-        </TouchableOpacity>
-
       </View>
     </View>
   );
@@ -83,7 +77,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginVertical: 10,
     position: "absolute",
-    top:230,
+    top:250,
+    left:10,
   },
   button2: {
     backgroundColor: '#8F181C',
@@ -92,16 +87,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginVertical: 10,
     position: "absolute",
-    top:300,
-  },
-  button3: {
-    backgroundColor: '#8F181C',
-    paddingVertical: 10,
-    paddingHorizontal: 27,
-    borderRadius: 20,
-    marginVertical: 10,
-    position: "absolute",
-    top:150,
+    top:250,
+    right:10,
   },
   buttonText: {
     fontSize: 18,

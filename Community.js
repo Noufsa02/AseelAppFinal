@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, Image, Modal, TouchableWithoutFeedback, Dimensions, Alert } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5, FontAwesome } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { addDoc, collection, getDocs, onSnapshot, doc } from 'firebase/firestore';
 import { FIREBASE_AUTH, FIREBASE_DB } from './FirebaseConfig';
@@ -123,7 +123,7 @@ const Community = ({ navigation }) => {
         {posts.map((post, index) => (
           <View key={index} style={styles.postContainer}>
             <View style={styles.header}>
-              <FontAwesome5 name="user-circle" size={40} color="gray" style={styles.avatar} />
+            <FontAwesome name="user-circle" size={40} color="#424530" style={styles.avatar} />
               <View style={styles.headerText}>
                 <View style={styles.userDetails}>
                   <Text style={styles.username}>{post.username}</Text>
@@ -140,7 +140,7 @@ const Community = ({ navigation }) => {
               ))}
             </View>
             <View style={styles.footer}>
-              <TouchableOpacity style={styles.iconButton}>
+              {/* <TouchableOpacity style={styles.iconButton}>
                 <FontAwesome5 name="comment" size={16} color="gray" />
               </TouchableOpacity>
               <TouchableOpacity style={styles.iconButton}>
@@ -151,7 +151,7 @@ const Community = ({ navigation }) => {
               </TouchableOpacity>
               <TouchableOpacity style={styles.iconButton}>
                 <FontAwesome5 name="share" size={16} color="gray" />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
           </View>
         ))}
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
   username: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#1DA1F2',
+    color: '#000',
     marginRight: 5,
     marginTop:-20,
   },
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 10,
     margin: 12,
-    padding: 80,
+    padding: 70,
   },
   footer: {
     flexDirection: 'row',
